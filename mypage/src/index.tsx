@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider } from "react-router-dom";
+import { Router, RouterProvider } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import App from "./App";
 import router from "./Router";
@@ -11,7 +11,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <>
     <RecoilRoot>
-      <RouterProvider router={router} />
+      <App />
     </RecoilRoot>
   </>
 );

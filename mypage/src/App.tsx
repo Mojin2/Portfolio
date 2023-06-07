@@ -1,7 +1,8 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { RecoilRoot } from "recoil";
+import { RecoilRoot, useRecoilValue } from "recoil";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { themeModestate } from "./atoms";
 import Header from "./Components/Header";
 import Router from "./Router";
 import Home from "./Routes/Home";
@@ -59,7 +60,7 @@ table {
   box-sizing:border-box;
 }
 body{
-  background: linear-gradient(360deg, #30cfd0, #330867);
+  background: ghostwhite;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
 }
@@ -69,11 +70,12 @@ a{
 }
 `;
 function App() {
+  const themeMode = useRecoilValue(themeModestate);
   return (
     <>
-      <ThemeProvider theme={lightTheme}>
+      <ThemeProvider theme={themeMode}>
         <GlobalStyle />
-        <Home />
+        <Router />
       </ThemeProvider>
     </>
   );

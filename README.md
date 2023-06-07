@@ -21,13 +21,14 @@
 - **react-router-dom** : 6.11.2
 - **styled-components** : 5.3.6
 - **react-query** : 3.39.3
+- **react-beautiful-dnd** : 13.1.1
 
 ### 🗓️ 프로젝트 진행
 
-- 프로젝트 생성
-- recoil 및 localstorage 적용
-- Background 시간에 따른 색 변화
--
+- 프로젝트 생성 with TypeScript ✅
+- recoil 및 localstorage 적용 ✅
+- DarkMode Toggle버튼을 통한 변화 ✅
+- Navi menu에 Drag&Drop 애니메이션 적용 ✅
 
 # Other tips
 
