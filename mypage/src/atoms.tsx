@@ -24,3 +24,8 @@ export const navimenustate = atom({
   default: ["WHO AM I", "MY WORKS", "MY VISION", "MORE DETAILS"],
   // effects_UNSTABLE: [persistAtom],
 });
+
+export const menuclickedstate = atom({
+  key: "menuclicked",
+  default: false,
+});

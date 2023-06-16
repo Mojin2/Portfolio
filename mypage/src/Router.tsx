@@ -13,6 +13,8 @@ import Vision from "./Routes/Vision";
 import Who from "./Routes/Who";
 import Works from "./Routes/Works";
 import More from "./Routes/More";
+import Default from "./Routes/Default";
+import { AnimatePresence } from "framer-motion";
 
 // 1. createBrowswerRouter
 // const router = createBrowserRouter([
@@ -51,10 +53,11 @@ function Router() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/who" element={<Who />} />
-        <Route path="/vision" element={<Vision />} />
-        <Route path="/works" element={<Works />} />
-        <Route path="/more" element={<More />} />
+        <Route path="/who" element={<Home />} />
+        <Route path="/vision" element={<Home />} />
+        <Route path="/works" element={<Home />} />
+        <Route path="/more" element={<Home />} />
+        <Route path="/menu" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );

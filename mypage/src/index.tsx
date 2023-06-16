@@ -4,6 +4,7 @@ import { Router, RouterProvider } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import App from "./App";
 import router from "./Router";
+import "./index.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

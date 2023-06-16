@@ -1,0 +1,13 @@
+@font-face {
+  font-family: "googleRighteous";
+  src: url(./asset/fonts/Righteous/Righteous-Regular.ttf);
+}
+@font-face {
+  font-family: "googleCarterOne";
+  src: url(./asset/fonts/Carter_One/CarterOne-Regular.ttf);
+}
+
+:root {
+  --font-googleRighteous: "googleRighteous";
+  --font-googleCarterOne: "googleCarterOne";
+}
