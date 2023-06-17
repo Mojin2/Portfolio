@@ -35,7 +35,9 @@ const Container = styled.div<{ clicked: boolean }>`
   overflow: hidden;
   width: 100vw;
   height: 100vh;
-  background-color: ${(props) => (!props.clicked ? "#eeeeee" : "#393e46")};
+  /* background-color: ${(props) =>
+    !props.clicked ? "#eeeeee" : "#393e46"}; */
+  background-color: #eeeeee;
   transition-duration: 0.3s;
   display: flex;
   justify-content: center;
@@ -45,7 +47,8 @@ const Wrapper = styled.div<{ clicked: boolean }>`
   width: 90vw;
   height: 90vh;
   /* background: ${(props) => props.theme.bgColor}; */
-  background: #222831;
+  /* background: #222831; */
+  background: #1d3557;
   transition-duration: 0.5s;
   display: flex;
   flex-direction: row;
@@ -76,7 +79,7 @@ const TextWrapper = styled.div`
 `;
 const Text = styled.div`
   /* color: ${(props) => props.theme.textColor}; */
-  color: #eeeeee;
+  color: #f1faee;
   font-size: 95px;
   line-height: 0.85;
   font-family: var(--font-googleCarterOne), cursive;
@@ -111,7 +114,8 @@ const NaviMenu = styled.div<{ bg: string; isDragging: boolean }>`
       : props.bg === "MORE DETAILS"
       ? "linear-gradient(90deg,#38f9d7,#43e97b)"
       : null}; */
-  background: #00adb5;
+  /* background: #00adb5; */
+  background: #1d3557;
   margin-bottom: 10px;
   border-radius: 20px;
   cursor: pointer;
@@ -142,6 +146,7 @@ const HiddenMenu = styled.div<{ clicked: boolean }>`
   justify-content: center;
   align-items: center;
   transition-duration: ${(props) => (props.clicked ? "1s" : null)};
+  z-index: 1;
 
   opacity: ${(props) => (props.clicked ? 1 : 0)};
 `;

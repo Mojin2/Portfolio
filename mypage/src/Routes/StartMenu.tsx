@@ -36,7 +36,8 @@ const InnerCircle = styled.div`
   width: 130px;
   height: 130px;
   border-radius: 65px;
-  background-color: #00adb5;
+  /* background-color: #00adb5; */
+  background-color: #457b9d;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,20 +45,20 @@ const InnerCircle = styled.div`
 `;
 const SvgWrapper = styled.div``;
 const Box = styled.div`
-  background-color: #222831;
+  background-color: #1d3557;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   :hover {
-    background-color: #00adb5;
+    /* background-color: #00adb5; */
     transition-duration: 1s;
   }
   :hover {
     ${InnerCircle} {
       background-color: #222831;
-      color: #00adb5;
+      color: #457b9d;
     }
     ${SvgWrapper} {
       transform: rotateY(360deg);
@@ -69,7 +70,7 @@ const Box = styled.div`
 const TextWrapper = styled.div`
   color: whitesmoke;
   font-size: 32px;
-  font-family: var(--font-googleRighteous);
+  font-family: var(--font-googleCarterOne);
 `;
 function StartMenu() {
   const navigate = useNavigate();
