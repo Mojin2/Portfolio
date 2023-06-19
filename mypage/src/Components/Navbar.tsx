@@ -32,8 +32,7 @@ const Right = styled.div`
   align-items: center;
 `;
 const Logo = styled.div`
-  font-family: var(--font-googleRighteous);
-
+  font-family: var(--font-googleLato);
   color: white;
   font-size: 25px;
   cursor: pointer;

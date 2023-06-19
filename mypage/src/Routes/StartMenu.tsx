@@ -37,7 +37,7 @@ const InnerCircle = styled.div`
   height: 130px;
   border-radius: 65px;
   /* background-color: #00adb5; */
-  background-color: #457b9d;
+  background-color: #222831;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,7 +45,7 @@ const InnerCircle = styled.div`
 `;
 const SvgWrapper = styled.div``;
 const Box = styled.div`
-  background-color: #1d3557;
+  background-color: #222831;
   height: 100%;
   display: flex;
   justify-content: center;
@@ -70,7 +70,7 @@ const Box = styled.div`
 const TextWrapper = styled.div`
   color: whitesmoke;
   font-size: 32px;
-  font-family: var(--font-googleCarterOne);
+  font-family: var(--font-googleLato);
 `;
 function StartMenu() {
   const navigate = useNavigate();

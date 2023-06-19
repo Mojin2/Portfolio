@@ -6,8 +6,13 @@
   font-family: "googleCarterOne";
   src: url(./asset/fonts/Carter_One/CarterOne-Regular.ttf);
 }
+@font-face {
+  font-family: "googleLato";
+  src: url(./asset/fonts/Lato/Lato-Regular.ttf);
+}
 
 :root {
   --font-googleRighteous: "googleRighteous";
   --font-googleCarterOne: "googleCarterOne";
+  --font-googleLato: "googleLato";
 }

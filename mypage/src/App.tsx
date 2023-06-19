@@ -1,3 +1,5 @@
+import { ChakraProvider } from "@chakra-ui/react";
+import { NextUIProvider } from "@nextui-org/react";
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { RecoilRoot, useRecoilValue } from "recoil";
@@ -74,10 +76,12 @@ function App() {
   const themeMode = useRecoilValue(themeModestate);
   return (
     <>
-      <ThemeProvider theme={themeMode}>
-        <GlobalStyle />
-        <Router />
-      </ThemeProvider>
+      <ChakraProvider>
+        <ThemeProvider theme={themeMode}>
+          <GlobalStyle />
+          <Router />
+        </ThemeProvider>
+      </ChakraProvider>
     </>
   );
 }

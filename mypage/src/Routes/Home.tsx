@@ -47,8 +47,7 @@ const Wrapper = styled.div<{ clicked: boolean }>`
   width: 90vw;
   height: 90vh;
   /* background: ${(props) => props.theme.bgColor}; */
-  /* background: #222831; */
-  background: #1d3557;
+  background: #222831;
   transition-duration: 0.5s;
   display: flex;
   flex-direction: row;
@@ -82,7 +81,8 @@ const Text = styled.div`
   color: #f1faee;
   font-size: 95px;
   line-height: 0.85;
-  font-family: var(--font-googleCarterOne), cursive;
+  /* font-family: var(--font-googleCarterOne), cursive; */
+  font-family: var(--font-googleLato);
   /* text-shadow: -4px 0 #000, 0 4px #000, 4px 0 #000, 0 -4px #000; */
 `;
 const ToggleButtonWrapper = styled.div`
@@ -133,7 +133,8 @@ const StartButton = styled.div`
   margin-left: 20px;
   margin-bottom: 20px;
   font-size: 24px;
-  font-family: var(--font-googleCarterOne);
+  /* font-family: var(--font-googleCarterOne); */
+  font-family: var(--font-googleLato);
 `;
 const HiddenMenu = styled.div<{ clicked: boolean }>`
   height: 300px;
@@ -152,7 +153,8 @@ const HiddenMenu = styled.div<{ clicked: boolean }>`
 `;
 const HiddenMenuList = styled.div`
   font-size: 36px;
-  font-family: var(--font-googleCarterOne);
+  /* font-family: var(--font-googleCarterOne); */
+  font-family: var(--font-googleLato);
 `;
 
 function Home() {
@@ -199,7 +201,7 @@ function Home() {
           <StartMenu />
         ) : null}
       </Wrapper>
-      <HiddenMenu clicked={menuclicked}>
+      {/* <HiddenMenu clicked={menuclicked}>
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="droppable">
             {(magic, snapshot) => (
@@ -240,7 +242,7 @@ function Home() {
             )}
           </Droppable>
         </DragDropContext>
-      </HiddenMenu>
+      </HiddenMenu> */}
     </Container>
   );
 }
