@@ -1,6 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AiFillHtml5 } from "react-icons/ai";
-import { FaCss3Alt, FaReact } from "react-icons/fa";
+import { FaCss3Alt, FaPeopleArrows, FaReact } from "react-icons/fa";
 import { MdJavascript, MdOutlineJavascript } from "react-icons/md";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
@@ -22,9 +22,11 @@ import {
   useInView,
   useMotionValueEvent,
   useScroll,
+  useTransform,
 } from "framer-motion";
 import ScrollVelocity from "../Components/ScrollVelocity";
-import { Button } from "@chakra-ui/react";
+import { Button, Card, CardBody, Heading, Stack, Text } from "@chakra-ui/react";
+import { BsFire } from "react-icons/bs";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -116,14 +118,49 @@ const Title = styled(motion.div)`
 const FillBox = styled.div`
   width: 70%;
   height: 80%;
-  background-color: #eeeeee;
+  background-color: #282f3a;
   border-radius: 10px;
 `;
-const Text = styled.div`
+const CustomText = styled.div`
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 24px;
+`;
+const LogoImg = styled.img`
+  width: 200px;
+  height: 200px;
+  border-radius: 100px;
+  margin-top: 10%;
+  /* filter: brightness(70%);
+  :hover {
+    filter: brightness(100%);
+  } */
+`;
+const ImageWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding-top: 10%;
+`;
+const CardWrapper = styled.div`
+  filter: brightness(70%);
+  :hover {
+    filter: brightness(100%);
+    scale: 1.1;
+    transition-duration: 0.7s;
+  }
+`;
+const ScrollBoxWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const ScrollBox = styled(motion.div)`
+  width: 80%;
+  height: 300px;
+  border-radius: 20px;
 `;
 function Who() {
   const refContainer = useRef(null);
@@ -150,9 +187,28 @@ function Who() {
   const reftextone = useRef(null);
   const isInViewtextone = useInView(reftextone);
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
+  const refCardOne = useRef(null);
+  const refCardTwo = useRef(null);
+  const refCardThree = useRef(null);
+  const isInViewCardOne = useInView(refCardOne);
+  const isInViewCardTwo = useInView(refCardTwo);
+  const isInViewCardThree = useInView(refCardThree);
+
+  const refBox = useRef(null);
+  const { scrollY: scrollYBox, scrollYProgress: scrollYProgressBox } =
+    useScroll({ target: refContainer, offset: ["end end", "start start"] });
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
     console.log("Page scroll:", latest);
   });
+  const scaleone = useTransform(scrollYProgress, [0.7, 0.77], [1, 0.8]);
+  const yone = useTransform(scrollYProgress, [0.7, 0.77], [0, -90]);
+
+  const scaletwo = useTransform(scrollYProgress, [0.77, 0.87], [1.1, 0.9]);
+  const ytwo = useTransform(scrollYProgress, [0.77, 0.87], [120, -360]);
+
+  const scalethree = useTransform(scrollYProgress, [0.87, 0.97], [1.3, 1]);
+  const ythree = useTransform(scrollYProgress, [0.87, 0.97], [240, -630]);
   return (
     <Wrapper ref={refContainer}>
       <Box style={{ height: "400px" }}>
@@ -221,24 +277,31 @@ function Who() {
         </TechUl>
       </Box>
       <Box />
+      {/* Second Page (Team) */}
       <Box
         style={{
           display: "flex",
           flexDirection: "column",
           height: "100%",
+          backgroundColor: "#29303b",
         }}
       >
-        <Title
-          ref={refTitleTwo}
-          style={{
-            paddingBottom: "10px",
-            transform: isInViewTitleTwo ? "none" : "translateY(30px)",
-            opacity: isInViewTitleTwo ? 1 : 0,
-            transition: "all 0.9s",
-          }}
-        >
-          Many Team Project Experiences
-        </Title>
+        <div style={{ width: "70%" }}>
+          <Title
+            ref={refTitleTwo}
+            style={{
+              transform: isInViewTitleTwo ? "none" : "translateY(30px)",
+              opacity: isInViewTitleTwo ? 1 : 0,
+              transition: "all 0.9s",
+              float: "left",
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            Many Team Project Experiences
+          </Title>
+        </div>
         <FillBox
           ref={refFillTwo}
           style={{
@@ -246,9 +309,74 @@ function Who() {
             transform: isInViewFillTwo ? "none" : "translateY(30px)",
             opacity: isInViewFillTwo ? 1 : 0,
             transition: "all 1s",
+            backgroundColor: "#222831",
           }}
-        ></FillBox>
+        >
+          <ImageWrapper>
+            <CardWrapper>
+              <Card
+                maxW="sm"
+                ref={refCardOne}
+                style={{
+                  transform: isInViewCardOne ? "none" : "translateY(50px)",
+                  opacity: isInViewCardOne ? 1 : 0,
+                  transition: isInViewCardOne ? "all 0.9s" : "0s",
+                  transitionDelay: isInViewCardOne ? "0.3s" : "0s",
+                }}
+              >
+                <CardBody>
+                  <LogoImg src="/images/logo1.jpeg" />
+                  <Stack mt={6} spacing={3}>
+                    <Heading size={"md"}>Major</Heading>
+                    <Text>Smart System Software</Text>
+                  </Stack>
+                </CardBody>
+              </Card>
+            </CardWrapper>
+            <CardWrapper>
+              <Card
+                maxW="sm"
+                ref={refCardTwo}
+                style={{
+                  transform: isInViewCardTwo ? "none" : "translateY(50px)",
+                  opacity: isInViewCardTwo ? 1 : 0,
+                  transition: isInViewCardTwo ? "all 0.9s" : "0s",
+                  transitionDelay: isInViewCardTwo ? "0.5s" : "0s",
+                }}
+              >
+                <CardBody>
+                  <LogoImg src="/images/logo3.png" />
+                  <Stack mt={6} spacing={3}>
+                    <Heading size={"md"}>Outside Activity</Heading>
+                    <Text>Likelion 9th</Text>
+                  </Stack>
+                </CardBody>
+              </Card>
+            </CardWrapper>
+            <CardWrapper>
+              <Card
+                maxW="sm"
+                ref={refCardThree}
+                style={{
+                  transform: isInViewCardThree ? "none" : "translateY(50px)",
+                  opacity: isInViewCardThree ? 1 : 0,
+                  transition: isInViewCardThree ? "all 0.9s" : "0s",
+                  transitionDelay: isInViewCardThree ? "0.7s" : "0s",
+                }}
+              >
+                <CardBody>
+                  <LogoImg src="/images/logo4.png" />
+                  <Stack mt={6} spacing={3}>
+                    <Heading size={"md"}>Contest</Heading>
+                    <Text>Idea & Coding Hackathon</Text>
+                  </Stack>
+                </CardBody>
+              </Card>
+            </CardWrapper>
+          </ImageWrapper>
+        </FillBox>
       </Box>
+      {/* Thrid Page (Trend) */}
       <Box
         style={{
           display: "flex",
@@ -256,17 +384,29 @@ function Who() {
           height: "100%",
         }}
       >
-        <Title
-          ref={refTitleThree}
+        <div
           style={{
-            paddingBottom: "10px",
-            transform: isInViewTitleThree ? "none" : "translateY(30px)",
-            opacity: isInViewTitleThree ? 1 : 0,
-            transition: "all 0.9s",
+            width: "70%",
           }}
         >
-          Interest in new Tech & Learning Fast Ability
-        </Title>
+          <Title
+            ref={refTitleThree}
+            style={{
+              transform: isInViewTitleThree ? "none" : "translateY(30px)",
+              opacity: isInViewTitleThree ? 1 : 0,
+              transition: "all 0.9s",
+              float: "left",
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            Be Passionate, Follow Trends
+            <div style={{ width: "100px" }}>
+              <BsFire size={38} style={{ marginLeft: "10px" }} color="red" />
+            </div>{" "}
+          </Title>
+        </div>
         <FillBox
           ref={refFillThree}
           style={{
@@ -304,7 +444,8 @@ function Who() {
                   bottom: "0px",
                   transform: isInViewimgone ? "none" : "translateY(30px)",
                   opacity: isInViewimgone ? 1 : 0,
-                  transition: "all 0.9s",
+                  transition: isInViewimgone ? "all 0.9s" : "0s",
+                  transitionDelay: isInViewimgone ? "0.5s" : "0s",
                 }}
               />
             </div>
@@ -323,12 +464,12 @@ function Who() {
                   paddingTop: "40px",
                   transform: isInViewtextone ? "none" : "translateY(30px)",
                   opacity: isInViewtextone ? 1 : 0,
-                  transition: "all 0.9s",
+                  transition: isInViewtextone ? "all 0.9s" : "0s",
+                  transitionDelay: isInViewtextone ? "0.5s" : "0s",
                 }}
               >
                 <Button
-                  variant={"outline"}
-                  colorScheme="teal"
+                  colorScheme="white"
                   borderRadius={"20px"}
                   padding="0px 10px"
                   border="2px"
@@ -338,11 +479,17 @@ function Who() {
                 >
                   New FrameWorks ∙ Trends
                 </Button>
-                <div style={{ paddingLeft: "20px", marginTop: "10px" }}>
-                  <Text>Always exploring</Text>
-                  <Text>new technologies,</Text>
-                  <Text>trying to apply</Text>
-                  <Text>trendy technologies.</Text>
+                <div
+                  style={{
+                    paddingLeft: "20px",
+                    marginTop: "10px",
+                    color: "#eeeeee",
+                  }}
+                >
+                  <CustomText>Always exploring</CustomText>
+                  <CustomText>new technologies,</CustomText>
+                  <CustomText>trying to apply</CustomText>
+                  <CustomText>trendy technologies.</CustomText>
                 </div>
               </div>
               <div style={{ position: "relative" }}>
@@ -359,8 +506,8 @@ function Who() {
                     left: "10px",
                     transform: isInViewimgtwo ? "none" : "translateY(30px)",
                     opacity: isInViewimgtwo ? 1 : 0,
-                    transition: "all 0.9s",
-                    transitionDelay: "0.8s",
+                    transition: isInViewimgtwo ? "all 0.9s" : "0s",
+                    transitionDelay: isInViewimgtwo ? "1s" : "0s",
                   }}
                 />
                 <img
@@ -375,8 +522,8 @@ function Who() {
                     left: "80px",
                     transform: isInViewimgthree ? "none" : "translateY(30px)",
                     opacity: isInViewimgthree ? 1 : 0,
-                    transition: "all 0.9s",
-                    transitionDelay: "1.2s",
+                    transition: isInViewimgthree ? "all 0.9s" : "0s",
+                    transitionDelay: isInViewimgthree ? "1.4s" : "0s",
                   }}
                 />
               </div>
@@ -384,6 +531,7 @@ function Who() {
           </div>
         </FillBox>
       </Box>
+      {/* Scroll Velocity */}
       <div style={{ width: "70%", margin: "0 auto" }}>
         <ScrollVelocity scrollY={scrollY} baseVelocity={-5}>
           Framer motion
@@ -392,24 +540,31 @@ function Who() {
           Scroll Velocity
         </ScrollVelocity>
       </div>
+      {/* Fourth Page (Conclusion) */}
       <Box
         style={{
           display: "flex",
           flexDirection: "column",
           height: "100%",
+          backgroundColor: "#29303b",
+          position: "sticky",
+          top: "0",
         }}
       >
-        <Title
-          ref={refTitleFour}
-          style={{
-            paddingBottom: "10px",
-            transform: isInViewTitleFour ? "none" : "translateY(30px)",
-            opacity: isInViewTitleFour ? 1 : 0,
-            transition: "all 0.9s",
-          }}
-        >
-          Following the Trends
-        </Title>
+        <div style={{ width: "70%" }}>
+          <Title
+            ref={refTitleFour}
+            style={{
+              paddingBottom: "10px",
+              transform: isInViewTitleFour ? "none" : "translateY(30px)",
+              opacity: isInViewTitleFour ? 1 : 0,
+              transition: "all 0.9s",
+              float: "left",
+            }}
+          >
+            Final Page
+          </Title>
+        </div>
         <FillBox
           ref={refFillFour}
           style={{
@@ -417,9 +572,59 @@ function Who() {
             transform: isInViewFillFour ? "none" : "translateY(30px)",
             opacity: isInViewFillFour ? 1 : 0,
             transition: "all 1s",
+            backgroundColor: "#29303b",
           }}
-        ></FillBox>
+        >
+          <ScrollBoxWrapper
+            ref={refBox}
+            style={{ height: "200vh", paddingTop: "10px" }}
+          >
+            <div
+              style={{
+                width: "100%",
+                height: "400px",
+                overflow: "hidden",
+                paddingTop: "80px",
+                paddingLeft: "16%",
+              }}
+            >
+              <ScrollBox
+                style={{
+                  border: "2px solid #eeeeee",
+                  backgroundColor: "#222831",
+                  y: yone,
+                  scale: scaleone,
+                }}
+              ></ScrollBox>
+              <ScrollBox
+                style={{
+                  border: "2px solid #eeeeee",
+                  backgroundColor: "#222831",
+                  y: ytwo,
+                  scale: scaletwo,
+                }}
+              ></ScrollBox>
+              <ScrollBox
+                style={{
+                  border: "2px solid #eeeeee",
+                  backgroundColor: "#222831",
+                  scale: scalethree,
+                  y: ythree,
+                }}
+              ></ScrollBox>
+            </div>
+          </ScrollBoxWrapper>
+        </FillBox>
       </Box>
+      {/* Sub */}
+      {/* <Box
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          height: "100%",
+          backgroundColor: "#29303b",
+        }}
+      ></Box> */}
     </Wrapper>
   );
 }
