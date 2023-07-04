@@ -199,7 +199,7 @@ function Who() {
     useScroll({ target: refContainer, offset: ["end end", "start start"] });
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    console.log("Page scroll:", latest);
+    console.log(scrollYProgress);
   });
   const scaleone = useTransform(scrollYProgress, [0.7, 0.77], [1, 0.8]);
   const yone = useTransform(scrollYProgress, [0.7, 0.77], [0, -90]);
