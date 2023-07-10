@@ -8,11 +8,16 @@ import {
   orderBy,
 } from "firebase/firestore";
 import { AnimatePresence, motion } from "framer-motion";
+import { url } from "inspector";
 import { useEffect, useState } from "react";
+import { BsFolderPlus, BsPlus } from "react-icons/bs";
+import { MdCancel } from "react-icons/md";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
+import { URL } from "url";
+import { worksState } from "../atoms";
 import WorksDetails from "../Components/WorksDetails";
 import WorksInputForm from "../Components/WorksInputForm";
-import { dbService } from "../Firebase";
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
@@ -21,16 +26,6 @@ const Wrapper = styled.div`
 const Ment = styled.div`
   width: 15%;
 `;
-// const Grid = styled.div`
-//   display: grid;
-//   grid-template-columns: repeat(5, 1fr);
-//   width: 85%;
-//   gap: 5px;
-//   padding-left: 20px;
-//   padding-right: 10px;
-//   padding-top: 15px;
-//   row-gap: 20px;
-// `;
 const CustomBox = styled.div`
   height: 200px;
   width: 200px;
@@ -54,41 +49,22 @@ const Overlay = styled(motion.div)`
   justify-content: center;
   align-items: center;
 `;
+const Image = styled.img`
+  background-size: cover;
+  filter: brightness(80%);
+  :hover {
+    scale: 1.1;
+    filter: brightness(110%);
+  }
+  transition-duration: 0.5s;
+  transition-property: scale;
+  /* border-radius: 20px; */
+  cursor: pointer;
+`;
 function Works() {
-  const [Salgu, setSalgu] = useState("Salgu");
-  const [works, setWorks] = useState([] as any);
-  // const getWorks = async () => {
-  //   const q = query(
-  //     collection(dbService, "works"),
-  //     orderBy("createdAt", "desc")
-  //   );
-  //   const querySnapshot = await getDocs(q);
-  //   querySnapshot.forEach((doc) => {
-  //     const newObj = {
-  //       ...doc.data(),
-  //       id: doc.id,
-  //     };
-  //     setWorks((prev: any) => [...prev, newObj]);
-  //   });
-  //   // onSnapshot(q, (snapshot) => {
-  //   //   const workArr = snapshot.docs.map((doc) => ({
-  //   //     ...doc.data(),
-  //   //     id: doc.id,
-  //   //   }));
-  //   //   setWorks(workArr);
-  //   // });
-  // };
-  // useEffect(() => {
-  //   getWorks();
-  // }, []);
-  const onClick = () => {
-    // const decRef = await addDoc(collection(dbService, "works"), {
-    //   Salgu,
-    //   createdAt: Date.now(),
-    console.log("clicked");
-  };
   const [id, setId] = useState<null | string>(null);
   const [input, setInput] = useState<null | boolean>(false);
+  const [works, setWorks] = useRecoilState(worksState);
   return (
     <Wrapper>
       <Ment></Ment>
@@ -100,52 +76,51 @@ function Works() {
         pr="2%"
         pt="2%"
       >
-        <Box
-          as={motion.div}
-          layoutId="1"
-          bg="#eeeeee"
-          height="200px"
-          borderRadius="20px"
-          onClick={() => setId("1")}
-        ></Box>
-        <Box
-          as={motion.div}
-          layoutId="2"
-          bg="#eeeeee"
-          height="200px"
-          borderRadius="20px"
-          onClick={() => setId("2")}
-        ></Box>
-        <Box
-          as={motion.div}
-          layoutId="3"
-          bg="#eeeeee"
-          height="200px"
-          borderRadius="20px"
-          onClick={() => setId("3")}
-        ></Box>
-        <Box
-          as={motion.div}
-          layoutId="4"
-          bg="#eeeeee"
-          height="200px"
-          borderRadius="20px"
-          onClick={() => setId("4")}
-        ></Box>
+        {works?.map((work) => (
+          <Box
+            key={`${work.id}`}
+            bg="#eeeeee"
+            as={motion.div}
+            layoutId={`${work.id}`}
+            height="200px"
+            // borderRadius="20px"
+            onClick={() => setId(`${work.id}`)}
+            // backgroundImage={`url('/images/${work.id}.PNG')`}
+            // backgroundPosition="center"
+            // backgroundRepeat="no-repeat"
+            // backgroundSize="cover"
+            // _hover={{ scale: "1.7" }}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              overflow: "hidden",
+            }}
+          >
+            <Image src={`/images/${work.id}.PNG`} />
+          </Box>
+        ))}
         <Box
           as={motion.div}
           layoutId="plus"
-          bg="green"
+          bg="blue.500"
           height="200px"
           borderRadius="20px"
           onClick={() => {
             setInput((prev) => !prev);
           }}
-        ></Box>
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <BsFolderPlus size={48} />
+        </Box>
       </SimpleGrid>
       <AnimatePresence>
         {id ? (
-          <Overlay onClick={() => setId(null)}>
+          <Overlay>
             <Box
               as={motion.div}
               layoutId={id}
@@ -153,8 +128,19 @@ function Works() {
               width={"800px"}
               height={"400px"}
               borderRadius={"20px"}
+              position="relative"
             >
-              <WorksDetails />
+              <MdCancel
+                size="35px"
+                onClick={() => setId(null)}
+                style={{
+                  position: "absolute",
+                  right: "8",
+                  top: "5",
+                  cursor: "pointer",
+                }}
+              />
+              <WorksDetails id={id} />
             </Box>
           </Overlay>
         ) : input ? (
@@ -177,3 +163,34 @@ function Works() {
 }
 
 export default Works;
+
+// const getWorks = async () => {
+//   const q = query(
+//     collection(dbService, "works"),
+//     orderBy("createdAt", "desc")
+//   );
+//   const querySnapshot = await getDocs(q);
+//   querySnapshot.forEach((doc) => {
+//     const newObj = {
+//       ...doc.data(),
+//       id: doc.id,
+//     };
+//     setWorks((prev: any) => [...prev, newObj]);
+//   });
+//   // onSnapshot(q, (snapshot) => {
+//   //   const workArr = snapshot.docs.map((doc) => ({
+//   //     ...doc.data(),
+//   //     id: doc.id,
+//   //   }));
+//   //   setWorks(workArr);
+//   // });
+// };
+// useEffect(() => {
+//   getWorks();
+// }, []);
+// const onClick = () => {
+//   // const decRef = await addDoc(collection(dbService, "works"), {
+//   //   Salgu,
+//   //   createdAt: Date.now(),
+//   console.log("clicked");
+// };
