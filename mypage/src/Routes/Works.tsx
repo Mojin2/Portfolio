@@ -144,7 +144,7 @@ function Works() {
             </Box>
           </Overlay>
         ) : input ? (
-          <Overlay onClick={() => setInput((prev) => !prev)}>
+          <Overlay>
             <Box
               as={motion.div}
               layoutId="plus"
@@ -152,7 +152,18 @@ function Works() {
               width={"400px"}
               height={"400px"}
               borderRadius={"20px"}
+              position="relative"
             >
+              <MdCancel
+                size="35px"
+                onClick={() => setInput(null)}
+                style={{
+                  position: "absolute",
+                  right: "8",
+                  top: "5",
+                  cursor: "pointer",
+                }}
+              />
               <WorksInputForm />
             </Box>
           </Overlay>

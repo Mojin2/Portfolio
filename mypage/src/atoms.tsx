@@ -38,13 +38,13 @@ export interface WorkProps {
 export const worksState = atom<WorkProps[]>({
   key: "works",
   default: [
-    { id: "1", title: "first", content: "first content" },
-    { id: "2", title: "second", content: "second content" },
-    { id: "3", title: "third", content: "third content" },
-    { id: "4", title: "fourth", content: "fourth content" },
-    { id: "5", title: "fourth", content: "fourth content" },
-    { id: "6", title: "fourth", content: "fourth content" },
-    { id: "7", title: "fourth", content: "fourth content" },
-    { id: "8", title: "fourth", content: "fourth content" },
+    { id: "1", title: "1st", content: "1st content" },
+    { id: "2", title: "2nd", content: "2nd content" },
+    { id: "3", title: "3rd", content: "3rd content" },
+    { id: "4", title: "4th", content: "4th content" },
+    { id: "5", title: "5th", content: "5th content" },
+    { id: "6", title: "6th", content: "6th content" },
+    { id: "7", title: "7th", content: "7th content" },
+    { id: "8", title: "8th", content: "8th content" },
   ],
 });
