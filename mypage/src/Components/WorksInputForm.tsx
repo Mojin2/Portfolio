@@ -38,6 +38,9 @@ function WorksInputForm() {
         id: String(parseInt(max) + 1),
         title: data.title,
         content: data.content,
+        gitLink: data.gitLink,
+        isPublic: data.isPublic,
+        urlLink: data.urlLink,
       },
     ]);
     setValue("id", "");
@@ -55,6 +58,10 @@ function WorksInputForm() {
       <FormWrapper onSubmit={handleSubmit(onValid)}>
         <InputForm {...register("title")} placeholder="Write a title" />
         <InputForm {...register("content")} placeholder="Write a Detail" />
+        <InputForm {...register("gitLink")} placeholder="Write a Detail" />
+        <InputForm {...register("urlLink")} placeholder="Write a Detail" />
+        <InputForm {...register("isPublic")} placeholder="Write a Detail" />
+
         <CreateButton>Add</CreateButton>
       </FormWrapper>
     </Wrapper>

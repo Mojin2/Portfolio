@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { AiOutlineMenu, AiOutlineGithub, AiFillYoutube } from "react-icons/ai";
 import { BsInstagram } from "react-icons/bs";
 import CustomSelect from "./CustomeSelect";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { menuclickedstate } from "../atoms";
@@ -91,31 +91,36 @@ function Navbar() {
     <Wrapper>
       <Left>
         <Logo onClick={() => navigate("/")}>Mojin2</Logo>
-        <Menu>Overview</Menu>
-        <Menu>About</Menu>
+        {/* <Menu>Overview</Menu>
+        <Menu>About</Menu> */}
       </Left>
 
       <Right>
         <Options>
-          <CustomSelect />
+          {/* <CustomSelect /> */}
           <OptionsUl>
             <OptionsLi1>
-              <BsInstagram
-                size={32}
-                style={{ marginLeft: "15px", cursor: "pointer" }}
-              />
+              <Link to="https://www.instagram.com/wlsrbbb">
+                <BsInstagram
+                  size={32}
+                  style={{ marginLeft: "15px", cursor: "pointer" }}
+                />
+              </Link>
             </OptionsLi1>
             <OptionsLi2>
               <AiFillYoutube
                 size={38}
                 style={{ marginLeft: "8px", cursor: "pointer" }}
+                onClick={() => alert("Sorry I'm not ready")}
               />
             </OptionsLi2>
             <OptionsLi3>
-              <AiOutlineGithub
-                size={32}
-                style={{ marginLeft: "8px", cursor: "pointer" }}
-              />
+              <Link to="https://github.com/Mojin2">
+                <AiOutlineGithub
+                  size={32}
+                  style={{ marginLeft: "8px", cursor: "pointer" }}
+                />
+              </Link>
             </OptionsLi3>
             <OptionsLi4>
               <AiOutlineMenu

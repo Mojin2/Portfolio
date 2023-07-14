@@ -21,11 +21,10 @@ import WorksInputForm from "../Components/WorksInputForm";
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  overflow: auto;
+  justify-content: center;
+  align-items: centers;
 `;
-const Ment = styled.div`
-  width: 15%;
-`;
+
 const CustomBox = styled.div`
   height: 200px;
   width: 200px;
@@ -61,19 +60,22 @@ const Image = styled.img`
   /* border-radius: 20px; */
   cursor: pointer;
 `;
+const Cover = styled.div`
+  color: #eeeeee;
+  font-weight: 600;
+  font-size: 26px;
+`;
 function Works() {
   const [id, setId] = useState<null | string>(null);
   const [input, setInput] = useState<null | boolean>(false);
   const [works, setWorks] = useRecoilState(worksState);
   return (
     <Wrapper>
-      <Ment></Ment>
       <SimpleGrid
-        width="85%"
+        width="90%"
         minChildWidth="200px"
         spacingX="10px"
         spacingY="10px"
-        pr="2%"
         pt="2%"
       >
         {works?.map((work) => (
@@ -95,12 +97,14 @@ function Works() {
               alignItems: "center",
               justifyContent: "center",
               overflow: "hidden",
+              cursor: "pointer",
             }}
           >
+            {/* <Cover>{work.title}</Cover> */}
             <Image src={`/images/${work.id}.PNG`} />
           </Box>
         ))}
-        <Box
+        {/* <Box
           as={motion.div}
           layoutId="plus"
           bg="blue.500"
@@ -116,7 +120,7 @@ function Works() {
           }}
         >
           <BsFolderPlus size={48} />
-        </Box>
+        </Box> */}
       </SimpleGrid>
       <AnimatePresence>
         {id ? (
@@ -143,31 +147,32 @@ function Works() {
               <WorksDetails id={id} />
             </Box>
           </Overlay>
-        ) : input ? (
-          <Overlay>
-            <Box
-              as={motion.div}
-              layoutId="plus"
-              bg="#eeeeee"
-              width={"400px"}
-              height={"400px"}
-              borderRadius={"20px"}
-              position="relative"
-            >
-              <MdCancel
-                size="35px"
-                onClick={() => setInput(null)}
-                style={{
-                  position: "absolute",
-                  right: "8",
-                  top: "5",
-                  cursor: "pointer",
-                }}
-              />
-              <WorksInputForm />
-            </Box>
-          </Overlay>
-        ) : null}
+        ) : // input ? (
+        //   <Overlay>
+        //     <Box
+        //       as={motion.div}
+        //       layoutId="plus"
+        //       bg="#eeeeee"
+        //       width={"400px"}
+        //       height={"400px"}
+        //       borderRadius={"20px"}
+        //       position="relative"
+        //     >
+        //       <MdCancel
+        //         size="35px"
+        //         onClick={() => setInput(null)}
+        //         style={{
+        //           position: "absolute",
+        //           right: "8",
+        //           top: "5",
+        //           cursor: "pointer",
+        //         }}
+        //       />
+        //       <WorksInputForm />
+        //     </Box>
+        //   </Overlay>
+        // ) :
+        null}
       </AnimatePresence>
     </Wrapper>
   );
