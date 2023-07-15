@@ -93,6 +93,7 @@ function Navbar() {
         <Logo onClick={() => navigate("/")}>Mojin2</Logo>
         {/* <Menu>Overview</Menu>
         <Menu>About</Menu> */}
+        <Menu onClick={() => navigate("/")}>Home</Menu>
       </Left>
 
       <Right>
