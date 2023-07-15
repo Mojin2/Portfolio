@@ -101,7 +101,7 @@ function Works() {
             }}
           >
             {/* <Cover>{work.title}</Cover> */}
-            <Image src={`/images/${work.id}.PNG`} />
+            <Image src={`./images/${work.id}.PNG`} />
           </Box>
         ))}
         {/* <Box

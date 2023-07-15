@@ -491,7 +491,7 @@ function Who() {
             >
               <img
                 ref={refimgone}
-                src="/images/trend2.png"
+                src="./images/trend2.png"
                 width={"900px"}
                 height={"100%"}
                 style={{
@@ -551,7 +551,7 @@ function Who() {
               <div style={{ position: "relative" }}>
                 <img
                   ref={refimgtwo}
-                  src="/images/trend3.png"
+                  src="./images/trend3.png"
                   width={"300"}
                   height={"200"}
                   style={{
@@ -568,7 +568,7 @@ function Who() {
                 />
                 <img
                   ref={refimgthree}
-                  src="/images/trend4.png"
+                  src="./images/trend4.png"
                   width={"300"}
                   height={"200"}
                   style={{
