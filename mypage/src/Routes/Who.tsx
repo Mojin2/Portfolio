@@ -7,6 +7,7 @@ import styled from "styled-components";
 import { clickedstate, themeModestate } from "../atoms";
 import ToggleButton from "../Components/ToggleButton";
 import { darkTheme, lightTheme } from "../theme";
+import Typist from "react-text-typist";
 import {
   SiCplusplus,
   SiDjango,
@@ -158,9 +159,59 @@ const ScrollBoxWrapper = styled.div`
 `;
 
 const ScrollBox = styled(motion.div)`
-  width: 80%;
+  width: 100%;
   height: 300px;
   border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #eee;
+  font-size: 50px;
+  font-weight: 600;
+`;
+
+const Mouse = styled.div`
+  margin-top: 140px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 1;
+  width: 30px;
+  height: 50px;
+  border: 2px solid #eee;
+  border-radius: 20px;
+  ::before {
+    content: "SCROLL";
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    margin-left: -29px;
+    width: 60px;
+    font-size: 14px;
+    color: #eee;
+    letter-spacing: 0px;
+    font-weight: 600;
+  }
+`;
+const MouseBall = styled.span`
+  position: absolute;
+  top: 8px;
+  left: 11px;
+  width: 4px;
+  height: 4px;
+  background-color: #eee;
+  border-radius: 50%;
+  @keyframes Mouse_act {
+    0% {
+      transform: translateY(5px);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+    100% {
+      transform: translateY(5px);
+    }
+  }
+  animation: Mouse_act 1s ease-out infinite;
 `;
 function Who() {
   const refContainer = useRef(null);
@@ -201,17 +252,17 @@ function Who() {
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     console.log(scrollYProgress);
   });
-  const scaleone = useTransform(scrollYProgress, [0.7, 0.77], [1, 0.8]);
-  const yone = useTransform(scrollYProgress, [0.7, 0.77], [0, -90]);
+  const scaleone = useTransform(scrollYProgress, [0.6, 0.72], [1, 0.8]);
+  const yone = useTransform(scrollYProgress, [0.6, 0.72], [0, -90]);
 
-  const scaletwo = useTransform(scrollYProgress, [0.77, 0.87], [1.1, 0.9]);
-  const ytwo = useTransform(scrollYProgress, [0.77, 0.87], [120, -360]);
+  const scaletwo = useTransform(scrollYProgress, [0.72, 0.85], [1.1, 0.9]);
+  const ytwo = useTransform(scrollYProgress, [0.72, 0.85], [120, -360]);
 
-  const scalethree = useTransform(scrollYProgress, [0.87, 0.97], [1.3, 1]);
-  const ythree = useTransform(scrollYProgress, [0.87, 0.97], [240, -630]);
+  const scalethree = useTransform(scrollYProgress, [0.85, 0.97], [1.3, 1]);
+  const ythree = useTransform(scrollYProgress, [0.85, 0.97], [240, -630]);
   return (
     <Wrapper ref={refContainer}>
-      <Box style={{ height: "400px" }}>
+      <Box style={{ height: "350px" }}>
         <Title
           style={{
             marginRight: "20px",
@@ -276,6 +327,11 @@ function Who() {
           </TechLi>
         </TechUl>
       </Box>
+      <Box>
+        <Mouse>
+          <MouseBall />
+        </Mouse>
+      </Box>
       <Box />
       {/* Second Page (Team) */}
       <Box
@@ -321,7 +377,7 @@ function Who() {
                   transform: isInViewCardOne ? "none" : "translateY(50px)",
                   opacity: isInViewCardOne ? 1 : 0,
                   transition: isInViewCardOne ? "all 0.9s" : "0s",
-                  transitionDelay: isInViewCardOne ? "0.3s" : "0s",
+                  transitionDelay: isInViewCardOne ? "0.15s" : "0s",
                 }}
               >
                 <CardBody>
@@ -341,7 +397,7 @@ function Who() {
                   transform: isInViewCardTwo ? "none" : "translateY(50px)",
                   opacity: isInViewCardTwo ? 1 : 0,
                   transition: isInViewCardTwo ? "all 0.9s" : "0s",
-                  transitionDelay: isInViewCardTwo ? "0.5s" : "0s",
+                  transitionDelay: isInViewCardTwo ? "0.25s" : "0s",
                 }}
               >
                 <CardBody>
@@ -361,7 +417,7 @@ function Who() {
                   transform: isInViewCardThree ? "none" : "translateY(50px)",
                   opacity: isInViewCardThree ? 1 : 0,
                   transition: isInViewCardThree ? "all 0.9s" : "0s",
-                  transitionDelay: isInViewCardThree ? "0.7s" : "0s",
+                  transitionDelay: isInViewCardThree ? "0.35s" : "0s",
                 }}
               >
                 <CardBody>
@@ -445,7 +501,7 @@ function Who() {
                   transform: isInViewimgone ? "none" : "translateY(30px)",
                   opacity: isInViewimgone ? 1 : 0,
                   transition: isInViewimgone ? "all 0.9s" : "0s",
-                  transitionDelay: isInViewimgone ? "0.5s" : "0s",
+                  transitionDelay: isInViewimgone ? "0.15s" : "0s",
                 }}
               />
             </div>
@@ -465,7 +521,7 @@ function Who() {
                   transform: isInViewtextone ? "none" : "translateY(30px)",
                   opacity: isInViewtextone ? 1 : 0,
                   transition: isInViewtextone ? "all 0.9s" : "0s",
-                  transitionDelay: isInViewtextone ? "0.5s" : "0s",
+                  transitionDelay: isInViewtextone ? "0.25s" : "0s",
                 }}
               >
                 <Button
@@ -507,12 +563,12 @@ function Who() {
                     transform: isInViewimgtwo ? "none" : "translateY(30px)",
                     opacity: isInViewimgtwo ? 1 : 0,
                     transition: isInViewimgtwo ? "all 0.9s" : "0s",
-                    transitionDelay: isInViewimgtwo ? "1s" : "0s",
+                    transitionDelay: isInViewimgtwo ? "0.4s" : "0s",
                   }}
                 />
                 <img
                   ref={refimgthree}
-                  src="/images/trend3.png"
+                  src="/images/trend4.png"
                   width={"300"}
                   height={"200"}
                   style={{
@@ -523,7 +579,7 @@ function Who() {
                     transform: isInViewimgthree ? "none" : "translateY(30px)",
                     opacity: isInViewimgthree ? 1 : 0,
                     transition: isInViewimgthree ? "all 0.9s" : "0s",
-                    transitionDelay: isInViewimgthree ? "1.4s" : "0s",
+                    transitionDelay: isInViewimgthree ? "0.5s" : "0s",
                   }}
                 />
               </div>
@@ -534,10 +590,10 @@ function Who() {
       {/* Scroll Velocity */}
       <div style={{ width: "70%", margin: "0 auto" }}>
         <ScrollVelocity scrollY={scrollY} baseVelocity={-5}>
-          Framer motion
+          Creative FrontEnd Developer
         </ScrollVelocity>
         <ScrollVelocity scrollY={scrollY} baseVelocity={5}>
-          Scroll Velocity
+          Follow Trends
         </ScrollVelocity>
       </div>
       {/* Fourth Page (Conclusion) */}
@@ -561,9 +617,7 @@ function Who() {
               transition: "all 0.9s",
               float: "left",
             }}
-          >
-            Final Page
-          </Title>
+          ></Title>
         </div>
         <FillBox
           ref={refFillFour}
@@ -577,54 +631,55 @@ function Who() {
         >
           <ScrollBoxWrapper
             ref={refBox}
-            style={{ height: "200vh", paddingTop: "10px" }}
+            style={{ height: "300vh", paddingTop: "10px" }}
           >
             <div
               style={{
-                width: "100%",
+                width: "90%",
                 height: "400px",
                 overflow: "hidden",
                 paddingTop: "80px",
-                paddingLeft: "16%",
               }}
             >
               <ScrollBox
                 style={{
-                  border: "2px solid #eeeeee",
+                  // border: "2px solid #eeeeee",
                   backgroundColor: "#222831",
                   y: yone,
                   scale: scaleone,
                 }}
-              ></ScrollBox>
+              >
+                Optimized for team projects,
+              </ScrollBox>
               <ScrollBox
                 style={{
-                  border: "2px solid #eeeeee",
+                  // border: "2px solid #eeeeee",
                   backgroundColor: "#222831",
                   y: ytwo,
                   scale: scaletwo,
                 }}
-              ></ScrollBox>
+              >
+                Aim for continuous learning,
+              </ScrollBox>
               <ScrollBox
                 style={{
-                  border: "2px solid #eeeeee",
+                  // border: "2px solid #eeeeee",
                   backgroundColor: "#222831",
                   scale: scalethree,
                   y: ythree,
                 }}
-              ></ScrollBox>
+              >
+                Hello, I'm MoJin!
+              </ScrollBox>
             </div>
           </ScrollBoxWrapper>
         </FillBox>
+        <Box style={{ position: "absolute", bottom: "55px" }}>
+          <Mouse>
+            <MouseBall />
+          </Mouse>
+        </Box>
       </Box>
-      {/* Sub */}
-      {/* <Box
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          height: "100%",
-          backgroundColor: "#29303b",
-        }}
-      ></Box> */}
     </Wrapper>
   );
 }

@@ -122,7 +122,7 @@ function StartMenu() {
                 </SvgWrapper>
               </InnerCircle>
             </Circle>
-            <TextWrapper>MORE DETAILS</TextWrapper>
+            <TextWrapper>MORE</TextWrapper>
           </Box>
         </Grid>
       </Wrapper>

@@ -101,7 +101,7 @@ function CustomAccordion() {
               fontSize={"50px"}
               fontWeight={800}
             >
-              VISION
+              MY VISION
             </Box>
           </AccordionButton>
         </h2>
@@ -134,7 +134,7 @@ function CustomAccordion() {
               fontSize={"50px"}
               fontWeight={800}
             >
-              MORE ABOUT ME
+              MORE ABOUT
             </Box>
           </AccordionButton>
         </h2>

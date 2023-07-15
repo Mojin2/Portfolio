@@ -21,7 +21,7 @@ export const themeModestate = atom({
 
 export const navimenustate = atom({
   key: "navimenu",
-  default: ["WHO AM I", "MY WORKS", "MY VISION", "MORE DETAILS"],
+  default: ["WHO AM I", "MY WORKS", "MY VISION", "MORE ABOUT"],
   // effects_UNSTABLE: [persistAtom],
 });
 

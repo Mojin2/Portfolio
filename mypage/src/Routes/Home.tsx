@@ -96,7 +96,11 @@ interface INaviWrapperProps {
 const NaviWrapper = styled.div<INaviWrapperProps>`
   margin-top: 0px;
 `;
-const NaviMenu = styled.div<{ bg: string; isDragging: boolean }>`
+const NaviMenu = styled.div<{
+  bg: string;
+  isDragging: boolean;
+  clicked: boolean;
+}>`
   font-size: 24px;
   font-weight: 800;
   color: ghostwhite;
@@ -119,6 +123,7 @@ const NaviMenu = styled.div<{ bg: string; isDragging: boolean }>`
   margin-bottom: 10px;
   border-radius: 20px;
   cursor: pointer;
+  pointer-events: ${(props) => (props.clicked ? null : "none")};
 `;
 const StartButton = styled.div`
   cursor: pointer;
@@ -148,7 +153,6 @@ const HiddenMenu = styled.div<{ clicked: boolean }>`
   align-items: center;
   transition-duration: ${(props) => (props.clicked ? "1s" : null)};
   z-index: 1;
-
   opacity: ${(props) => (props.clicked ? 1 : 0)};
 `;
 const HiddenMenuList = styled.div`
@@ -201,7 +205,7 @@ function Home() {
           <StartMenu />
         ) : null}
       </Wrapper>
-      {/* <HiddenMenu clicked={menuclicked}>
+      <HiddenMenu clicked={menuclicked}>
         <DragDropContext onDragEnd={onDragEnd}>
           <Droppable droppableId="droppable">
             {(magic, snapshot) => (
@@ -220,6 +224,7 @@ function Home() {
                         {...magic.draggableProps}
                         ref={magic.innerRef}
                         bg={menu}
+                        clicked={menuclicked}
                         onClick={() =>
                           menu === "WHO AM I"
                             ? navigate("/who")
@@ -227,7 +232,7 @@ function Home() {
                             ? navigate("/works")
                             : menu === "MY VISION"
                             ? navigate("/vision")
-                            : menu === "MORE DETAILS"
+                            : menu === "MORE ABOUT"
                             ? navigate("/more")
                             : null
                         }
@@ -242,7 +247,7 @@ function Home() {
             )}
           </Droppable>
         </DragDropContext>
-      </HiddenMenu> */}
+      </HiddenMenu>
     </Container>
   );
 }
