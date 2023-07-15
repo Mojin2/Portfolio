@@ -381,7 +381,7 @@ function Who() {
                 }}
               >
                 <CardBody>
-                  <LogoImg src="/images/logo1.jpeg" />
+                  <LogoImg src="./images/logo1.jpeg" />
                   <Stack mt={6} spacing={3}>
                     <Heading size={"md"}>Major</Heading>
                     <Text>Smart System Software</Text>
@@ -401,7 +401,7 @@ function Who() {
                 }}
               >
                 <CardBody>
-                  <LogoImg src="/images/logo3.png" />
+                  <LogoImg src="./images/logo3.png" />
                   <Stack mt={6} spacing={3}>
                     <Heading size={"md"}>Outside Activity</Heading>
                     <Text>Likelion 9th</Text>
@@ -421,7 +421,7 @@ function Who() {
                 }}
               >
                 <CardBody>
-                  <LogoImg src="/images/logo4.png" />
+                  <LogoImg src="./images/logo4.png" />
                   <Stack mt={6} spacing={3}>
                     <Heading size={"md"}>Contest</Heading>
                     <Text>Idea & Coding Hackathon</Text>
