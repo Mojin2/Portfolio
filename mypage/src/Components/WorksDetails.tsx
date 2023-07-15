@@ -81,7 +81,7 @@ function WorksDetails({ id }: IdProps) {
   return (
     <Wrapper>
       <LeftWrapper>
-        <Image src={`/images/${work.id}.PNG`} />
+        <Image src={`./images/${work.id}.PNG`} />
       </LeftWrapper>
       <RightWrapper>
         <Title>{work.title}</Title>
