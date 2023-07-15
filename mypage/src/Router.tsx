@@ -50,7 +50,7 @@ import { AnimatePresence } from "framer-motion";
 // 2. BrowserRouter
 function Router() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/who" element={<Home />} />

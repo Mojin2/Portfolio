@@ -40,8 +40,8 @@ function CustomAccordion() {
           </AccordionButton>
         </h2>
         <AccordionPanel pb={4} textColor={"white"} width={"300px"}>
-          <Text>Introduce myself.</Text>
-          <Text>Come and see my info page.</Text>
+          <Text>Introduce myself</Text>
+          <Text>Come and see my info page</Text>
           <Button
             rightIcon={<MdArrowForward />}
             onClick={() => navigate("/who")}
@@ -73,8 +73,8 @@ function CustomAccordion() {
           </AccordionButton>
         </h2>
         <AccordionPanel pb={4} textColor={"white"} width={"300px"}>
-          <Text>Page for My Works</Text>
-          <Text>University ~ Now</Text>
+          <Text>Page for my works</Text>
+          <Text>By using framer motion</Text>
           <Button
             rightIcon={<MdArrowForward />}
             onClick={() => navigate("/works")}
@@ -106,8 +106,7 @@ function CustomAccordion() {
           </AccordionButton>
         </h2>
         <AccordionPanel pb={4} textColor={"white"} width={"300px"}>
-          <Text>What Will do</Text>
-          <Text>Upgrade my Skills</Text>
+          <Text>My ultimate goal</Text>
           <Button
             rightIcon={<MdArrowForward />}
             onClick={() => navigate("/vision")}
@@ -139,7 +138,7 @@ function CustomAccordion() {
           </AccordionButton>
         </h2>
         <AccordionPanel pb={4} textColor={"white"} width={"300px"}>
-          <Text>More Detail Info About Me</Text>
+          <Text>More info about me</Text>
           <Button
             rightIcon={<MdArrowForward />}
             onClick={() => navigate("/more")}

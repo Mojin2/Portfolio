@@ -64,5 +64,6 @@
     "@types/canvas-confetti": "^1.6.0",
     "@types/react-beautiful-dnd": "^13.1.4",
     "@types/styled-components": "^5.1.26"
-  }
+  },
+  "homepage": "https://Mojin2.github.io/Portfolio"
 }
