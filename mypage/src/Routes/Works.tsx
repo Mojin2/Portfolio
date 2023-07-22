@@ -23,6 +23,7 @@ const Wrapper = styled.div`
   width: 100%;
   justify-content: center;
   align-items: centers;
+  z-index: 10;
 `;
 
 const CustomBox = styled.div`

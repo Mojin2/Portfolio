@@ -40,6 +40,7 @@ const Wrapper = styled.div`
   border-bottom-left-radius: 40px;
   border-bottom-right-radius: 40px;
   border-top: none;
+  z-index: 10;
 `;
 const Box = styled.div`
   height: 90px;
@@ -249,9 +250,9 @@ function Who() {
   const { scrollY: scrollYBox, scrollYProgress: scrollYProgressBox } =
     useScroll({ target: refContainer, offset: ["end end", "start start"] });
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    console.log(scrollYProgress);
-  });
+  // useMotionValueEvent(scrollYProgress, "change", (latest) => {
+  //   console.log(scrollYProgress);
+  // });
   const scaleone = useTransform(scrollYProgress, [0.6, 0.72], [1, 0.8]);
   const yone = useTransform(scrollYProgress, [0.6, 0.72], [0, -90]);
 
@@ -262,80 +263,90 @@ function Who() {
   const ythree = useTransform(scrollYProgress, [0.85, 0.97], [240, -630]);
   return (
     <Wrapper ref={refContainer}>
-      <Box style={{ height: "350px" }}>
-        <Title
-          style={{
-            marginRight: "20px",
-            color: "teal",
-          }}
-        >
-          Be Creative,
-        </Title>
-        <Title>FrontEnd Developer.</Title>
+      <Box
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <Box style={{ height: "350px" }}>
+          <Title
+            style={{
+              marginRight: "20px",
+              color: "teal",
+            }}
+          >
+            Be Creative,
+          </Title>
+          <Title>FrontEnd Developer.</Title>
+        </Box>
+        <Box>
+          <Title>My Skills</Title>
+          <TechUl>
+            <TechLi>
+              <SvgWrapper
+                cor="#e34f26"
+                style={{ paddingTop: "4px", fontSize: "40px" }}
+              >
+                <AiFillHtml5 />
+              </SvgWrapper>
+              <SvgWrapper
+                cor="#1572b6"
+                style={{ paddingTop: "5px", fontSize: "40px" }}
+              >
+                <FaCss3Alt />
+              </SvgWrapper>
+              <SvgWrapper cor="#f7df1e">
+                <SiJavascript />
+              </SvgWrapper>
+              <SvgWrapper cor="#3178c6">
+                <SiTypescript />
+              </SvgWrapper>
+              <SvgWrapper cor="#61dafb">
+                <FaReact />
+              </SvgWrapper>
+            </TechLi>
+          </TechUl>
+        </Box>
+        <Box>
+          <Title>My Experiences</Title>
+          <TechUl>
+            <TechLi>
+              <SvgWrapper cor="#00599c">
+                <SiCplusplus />
+              </SvgWrapper>
+              <SvgWrapper cor="#3776ab">
+                <SiPython />
+              </SvgWrapper>
+              <SvgWrapper
+                cor="#105d40"
+                style={{
+                  paddingTop: "4px",
+                  paddingRight: "5px",
+                  fontSize: "36px",
+                }}
+              >
+                <SiDjango />
+              </SvgWrapper>
+              <SvgWrapper cor="#6db33f">
+                <SiSpring />
+              </SvgWrapper>
+            </TechLi>
+          </TechUl>
+        </Box>
+        <Box>
+          <Mouse>
+            <MouseBall />
+          </Mouse>
+        </Box>
+        <Box />
       </Box>
-      <Box>
-        <Title>My Skills</Title>
-        <TechUl>
-          <TechLi>
-            <SvgWrapper
-              cor="#e34f26"
-              style={{ paddingTop: "4px", fontSize: "40px" }}
-            >
-              <AiFillHtml5 />
-            </SvgWrapper>
-            <SvgWrapper
-              cor="#1572b6"
-              style={{ paddingTop: "5px", fontSize: "40px" }}
-            >
-              <FaCss3Alt />
-            </SvgWrapper>
-            <SvgWrapper cor="#f7df1e">
-              <SiJavascript />
-            </SvgWrapper>
-            <SvgWrapper cor="#3178c6">
-              <SiTypescript />
-            </SvgWrapper>
-            <SvgWrapper cor="#61dafb">
-              <FaReact />
-            </SvgWrapper>
-          </TechLi>
-        </TechUl>
-      </Box>
-      <Box>
-        <Title>My Experiences</Title>
-        <TechUl>
-          <TechLi>
-            <SvgWrapper cor="#00599c">
-              <SiCplusplus />
-            </SvgWrapper>
-            <SvgWrapper cor="#3776ab">
-              <SiPython />
-            </SvgWrapper>
-            <SvgWrapper
-              cor="#105d40"
-              style={{
-                paddingTop: "4px",
-                paddingRight: "5px",
-                fontSize: "36px",
-              }}
-            >
-              <SiDjango />
-            </SvgWrapper>
-            <SvgWrapper cor="#6db33f">
-              <SiSpring />
-            </SvgWrapper>
-          </TechLi>
-        </TechUl>
-      </Box>
-      <Box>
-        <Mouse>
-          <MouseBall />
-        </Mouse>
-      </Box>
-      <Box />
       {/* Second Page (Team) */}
       <Box
         style={{
+          width: "100%",
           display: "flex",
           flexDirection: "column",
           height: "100%",

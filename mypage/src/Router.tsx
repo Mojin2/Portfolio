@@ -15,6 +15,52 @@ import Works from "./Routes/Works";
 import More from "./Routes/More";
 import Default from "./Routes/Default";
 import { AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+
+function Router() {
+  const [iWidth, setiWidth] = useState(0);
+
+  useEffect(() => {
+    const updateWindowDimensions = () => {
+      const newiWidth = window.innerWidth;
+      setiWidth(newiWidth);
+      console.log("updating widths");
+    };
+
+    window.addEventListener("resize", updateWindowDimensions);
+
+    return () => window.removeEventListener("resize", updateWindowDimensions);
+  }, []);
+
+  console.log("give width : ", iWidth);
+  return (
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+      <Routes>
+        {iWidth > 1038 ? (
+          <>
+            <Route path="/" element={<Home />} />
+            <Route path="/who" element={<Home />} />
+            <Route path="/vision" element={<Home />} />
+            <Route path="/works" element={<Home />} />
+            <Route path="/more" element={<Home />} />
+            <Route path="/menu" element={<Home />} />
+          </>
+        ) : (
+          <>
+            <Route path="/" element={<NotFound />} />
+            <Route path="/who" element={<NotFound />} />
+            <Route path="/vision" element={<NotFound />} />
+            <Route path="/works" element={<NotFound />} />
+            <Route path="/more" element={<NotFound />} />
+            <Route path="/menu" element={<NotFound />} />
+          </>
+        )}
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default Router;
 
 // 1. createBrowswerRouter
 // const router = createBrowserRouter([
@@ -48,19 +94,3 @@ import { AnimatePresence } from "framer-motion";
 // ]);
 
 // 2. BrowserRouter
-function Router() {
-  return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/who" element={<Home />} />
-        <Route path="/vision" element={<Home />} />
-        <Route path="/works" element={<Home />} />
-        <Route path="/more" element={<Home />} />
-        <Route path="/menu" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
-  );
-}
-
-export default Router;

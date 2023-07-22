@@ -152,7 +152,7 @@ const HiddenMenu = styled.div<{ clicked: boolean }>`
   justify-content: center;
   align-items: center;
   transition-duration: ${(props) => (props.clicked ? "1s" : null)};
-  z-index: 1;
+  z-index: 0;
   opacity: ${(props) => (props.clicked ? 1 : 0)};
 `;
 const HiddenMenuList = styled.div`
