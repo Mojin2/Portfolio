@@ -36,7 +36,7 @@ function Router() {
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
-        {iWidth > 1038 ? (
+        {iWidth > 500 ? (
           <>
             <Route path="/" element={<Home />} />
             <Route path="/who" element={<Home />} />

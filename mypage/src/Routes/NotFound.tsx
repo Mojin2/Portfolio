@@ -1,5 +1,5 @@
 function NotFound() {
-  return <div>404 NotFound.</div>;
+  return <div>Sorry, use In Full Screen.</div>;
 }
 
 export default NotFound;
