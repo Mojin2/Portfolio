@@ -1,20 +1,7 @@
-import {
-  BrowserRouter,
-  createBrowserRouter,
-  Route,
-  Routes,
-} from "react-router-dom";
-import App from "./App";
-import Header from "./Components/Header";
-import About from "./Routes/Vision";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 import Home from "./Routes/Home";
 import NotFound from "./Routes/NotFound";
-import Vision from "./Routes/Vision";
-import Who from "./Routes/Who";
-import Works from "./Routes/Works";
-import More from "./Routes/More";
-import Default from "./Routes/Default";
-import { AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 
 function Router() {
@@ -36,7 +23,7 @@ function Router() {
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
-        {iWidth > 500 ? (
+        {iWidth > 500 || iWidth === 0 ? (
           <>
             <Route path="/" element={<Home />} />
             <Route path="/who" element={<Home />} />
@@ -47,7 +34,7 @@ function Router() {
           </>
         ) : (
           <>
-            <Route path="/" element={<NotFound />} />
+            <Route path="/" element={<Home />} />
             <Route path="/who" element={<NotFound />} />
             <Route path="/vision" element={<NotFound />} />
             <Route path="/works" element={<NotFound />} />
